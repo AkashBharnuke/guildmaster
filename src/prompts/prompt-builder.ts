@@ -9,6 +9,7 @@ export class PromptBuilder {
                     role: "system",
                     content: PromptTemplates.system
                 },
+                ...context.conversation,
                 {
                     role: "user",
                     content: `

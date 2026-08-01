@@ -5,7 +5,8 @@ export class ContextBuilder {
     build(context: ExecutionContext): PromptContext {
         return {
             instructions: context.agent.instructions,
-            input: context.input
+            input: context.input,
+            conversation: context.memory.getConversations()
         }
     }
 }

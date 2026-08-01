@@ -33,10 +33,11 @@ const guild = new GuildMaster({
     provider,
 });
 
-await guild.run({
+const result = await guild.run({
     agent: assistant,
     input: "Hello",
 });
 
+logger.info(`Final Output: ${result.output}`);
 
 logger.info("═══════════════════════════════");

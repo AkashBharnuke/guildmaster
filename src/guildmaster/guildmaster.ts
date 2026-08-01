@@ -1,5 +1,5 @@
 import { GuildMasterConfig, RuntimeOptions } from "./types.js";
-import { Runtime }from "../runtime/index.js";
+import { Runtime, RuntimeResult }from "../runtime/index.js";
 import { Planner } from "@/planner/index.js";
 import { ToolExecutor } from "@/tool-runtime/index.js";
 
@@ -16,7 +16,7 @@ export class GuildMaster {
         this.runtime = new Runtime(planner, toolExecutor);
     }
 
-    async run(options: RuntimeOptions): Promise<unknown> {
+    async run(options: RuntimeOptions): Promise<RuntimeResult> {
         return this.runtime.run(options);
     }
 }

@@ -6,6 +6,7 @@ export interface PromptMessage {
 export interface PromptContext {
     instructions: string;
     input: string;
+    conversation: PromptMessage[]
 }
 
 export interface Prompt {
