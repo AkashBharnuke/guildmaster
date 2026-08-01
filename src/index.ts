@@ -3,6 +3,7 @@ import { env } from "./config/index.js";
 import { GuildMaster } from "./guildmaster/index.js";
 import { logger } from "./logging/index.js";
 import { createTool } from "./tool/index.js";
+import { GroqProvider } from "./providers/index.js";
 
 logger.info("═══════════════════════════════");
 logger.info("GuildMaster SDK");
@@ -22,8 +23,14 @@ const assistant = createAgent({
     tools: [weather],
 });
 
+const provider = new GroqProvider({
+    apiKey: env.groq.apiKey!,
+    model: env.groq.model
+})
+
+
 const guild = new GuildMaster({
-    provider: {},
+    provider,
 });
 
 await guild.run({
