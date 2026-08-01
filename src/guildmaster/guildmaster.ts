@@ -1,18 +1,16 @@
-import { Agent } from "@/agent/index.js";
+import { GuildMasterConfig, RuntimeOptions } from "./types.js";
+import { Runtime }from "../runtime/index.js";
 
-export interface GuildMasterConfig {
-  provider: unknown;
-}
-
-export interface RunOptions {
-    agent: Agent;
-    input: string;
-}
 
 export class GuildMaster {
-    constructor(private readonly config: GuildMasterConfig) {}
 
-    async run(options: RunOptions): Promise<unknown> {
-        return options;
+    private readonly runtime: Runtime;
+
+    constructor(private readonly config: GuildMasterConfig) {
+        this.runtime = new Runtime();
+    }
+
+    async run(options: RuntimeOptions): Promise<unknown> {
+        return this.runtime.run(options);
     }
 }
